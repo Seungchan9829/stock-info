@@ -1,6 +1,13 @@
+# 불필요한 폴더
 node_modules
-.dockerignore
-Dockerfile
-npm-debug.log
-.git
 .next
+.git
+
+# 개발/편의 파일
+.env*
+.vscode
+*.log
+*.md
+
+# 빌드시 불필요한 것
+docker-compose*.yml
