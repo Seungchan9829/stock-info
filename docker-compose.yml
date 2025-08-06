@@ -1,11 +1,11 @@
 services:
   web:
-    container_name: nextjs-app
-    build: .
+    container_name: stock-info-app-prod
+    build:
+      context: .
+      dockerfile: Dockerfile       # 기본 Dockerfile (멀티 스테이지) 사용
     ports:
       - "3000:3000"
-    volumes:
-      - .:/app
-      - /app/node_modules
     environment:
-      - NODE_ENV=development
+      - NODE_ENV=production
+    restart: always                # 장애 시 자동 재시작
