@@ -1,3 +1,5 @@
+export const dynamic = 'force-dynamic';
+export const revalidate = 0;
 import { getLowDi20Stocks } from "@/services/LowDi20Service";
 import { getTodayStr } from "@/utils/date";
 import { toEokUnit } from "@/utils/transform";
