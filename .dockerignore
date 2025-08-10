@@ -11,3 +11,11 @@ node_modules
 
 # 빌드시 불필요한 것
 docker-compose*.yml
+<<<<<<< HEAD
+=======
+
+backup/
+*.dump
+*.sql
+*.bak
+>>>>>>> develop
