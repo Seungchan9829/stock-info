@@ -1,6 +1,6 @@
 import { getLowDi20Stocks } from "@/services/LowDi20Service";
 import { getTodayStr } from "@/utils/date";
-
+import { toEokUnit } from "@/utils/transform";
 type SearchParams = { date ?: string}; 
 
 // { searchParams : SearchParams } -> 원래 props의 타입을 의미함 
@@ -44,16 +44,21 @@ export default async function Page({ searchParams } : { searchParams: Promise<Se
                 key={r.ticker}
                 className="bg-white shadow-md rounded-lg p-5 border hover:shadow-lg transition-shadow duration-200"
             >
-                {/* 티커 */}
-                <div className="flex items-center justify-between mb-3">
-                <span className="text-lg font-semibold text-indigo-600">{r.ticker}</span>
-                <span className="text-sm text-gray-500"># {r.rank ?? "-"}</span>
+                {/* 헤더: 티커 + 종목명 + 시총 */}
+                <div className="flex items-start justify-between mb-3">
+                    <div>
+                    <span className="block text-lg font-bold text-indigo-600">{r.ticker}</span>
+                    <span className="block text-xs text-gray-500">{r.fullname}</span>
+                    </div>
+                    <span className="text-sm text-gray-500">
+                    시가총액: {toEokUnit(r.marketcap)}
+                    </span>
                 </div>
 
                 {/* 종가 */}
                 <div className="flex justify-between text-sm mb-2">
                 <span className="text-gray-500">종가</span>
-                <span className="font-medium">{r.close.toLocaleString()} 원</span>
+                <span className="font-medium">{r.close.toLocaleString()} USD</span>
                 </div>
 
                 {/* 이격도 */}
@@ -71,7 +76,7 @@ export default async function Page({ searchParams } : { searchParams: Promise<Se
                 {/* pValue */}
                 <div className="flex justify-between text-sm">
                 <span className="text-gray-500">pValue</span>
-                <span className="font-medium">{r.pValue}</span>
+                <span className="font-medium">{r.pValue.toFixed(2)}</span>
                 </div>
             </div>
             ))}

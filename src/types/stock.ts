@@ -1,5 +1,7 @@
 export type PriceRow = {
     date: string;  // 'YYYY-MM-DD'로 받는 걸 권장
+    fullname : string;
+    marketcap: number
     open: number;
     high: number;
     low: number;

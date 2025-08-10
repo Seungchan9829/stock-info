@@ -1,19 +1,5 @@
-export type stock_info = {
-    id : number;
-    ticker : string;
-    full_name : string;
-    exchange : string;
-    country : string;
-    marketcap : bigint;
-};
-
-import { query } from "@/db";
 import { pool } from "@/db";
 import { PriceRow, PricesByTicker } from "@/types/stock";
-export async function getStockInfoById(id:number) : Promise<stock_info | null> {
-    const res = await query('SELECT * FROM stock_info WHERE id = $1', [id]);
-    return res.rows[0] ?? null;
-}
 
 export async function getPricesByTickersAndRange(
     tickers: string[],
@@ -27,6 +13,8 @@ export async function getPricesByTickersAndRange(
         const sql = `
             SELECT
                 si.ticker,
+                si.fullname,
+                si.marketcap::float8,
                 sp.date::date::text AS date,
                 sp.open::float8  AS open,
                 sp.high::float8  AS high,
@@ -44,13 +32,17 @@ export async function getPricesByTickersAndRange(
       const client = await pool.connect();
       try {
         const { rows } = await client.query<{
-          ticker: string, date: string, open: number; high: number; low: number; close: number; volume: number;
+          ticker: string; fullname: string; marketcap: number; 
+          date: string; open: number; high: number; low: number; close: number; volume: number;
+          
         }>(sql, [upperTickers, start, end]);
     
         const byTicker: PricesByTicker = {};
         for (const r of rows) {
           if (!byTicker[r.ticker]) byTicker[r.ticker] = [];
           byTicker[r.ticker].push({
+            fullname: r.fullname,
+            marketcap: r.marketcap,
             date: r.date,
             open: r.open,
             high: r.high,

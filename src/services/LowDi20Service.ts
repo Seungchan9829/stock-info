@@ -27,7 +27,9 @@ for (const ticker in stocksInfo) {
             ticker : ticker,
             close : todayStockInfo.close,
             di : todayStockInfo.di,
-            pValue : pValue
+            pValue : pValue,
+            marketcap : todayStockInfo.marketcap,
+            fullname : todayStockInfo.fullname
 
         })
     }
