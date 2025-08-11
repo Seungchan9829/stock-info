@@ -12,6 +12,8 @@ services:
     depends_on:
       - db
     restart: always                # 장애 시 자동 재시작
+    networks:
+      - app-net
 
   db:
     image: postgres:15
@@ -23,8 +25,12 @@ services:
       POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
     volumes:
       - pgdata:/var/lib/postgresql/data
-    ports:
-      - "5432:5432"
+    networks:
+      - app-net
   
 volumes:
   pgdata:
+
+networks:
+  app-net:
+    external: true
