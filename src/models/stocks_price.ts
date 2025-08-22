@@ -1,4 +1,6 @@
-import { pool } from "@/db";
+import { NASDAQ_100 } from "@/constant/nasdaq_100";
+import { pool, query } from "@/db";
+import { SQL_GET_NASDAQ_100 } from "@/repositories/stockPrices";
 import { PriceRow, PricesByTicker } from "@/types/stock";
 
 export async function getPricesByTickersAndRange(
@@ -54,10 +56,26 @@ export async function getPricesByTickersAndRange(
         return byTicker;
       } finally {
         client.release();
-      }
-    }
+      }}
 
+export type ReturnRow = {
+    ticker: string;
+    as_of: string;       // date
+    close_now: number;
+    marketcap: number;
+    d1_ret: number | null;
+    w1_ret: number | null;
+    m1_ret: number | null;
+    m3_ret: number | null;
+    m6_ret: number | null;
+};
 
-
-
-
+export async function getReturnsForTickers(
+    tickers: string[],
+    client: import("pg").PoolClient
+  ): Promise<ReturnRow[]> {
+    const uniq = [...new Set(tickers.map(t => t.toUpperCase()))];
+    if (uniq.length === 0) return [];
+    const { rows } = await client.query<ReturnRow>(SQL_GET_NASDAQ_100, [uniq]);
+    return rows;
+  }

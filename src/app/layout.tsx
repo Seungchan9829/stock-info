@@ -29,6 +29,7 @@ export default function RootLayout({
         <nav className="bg-gray-800 text-white p-4 flex gap-4">
           <Link href="/">홈</Link>
           <Link href="/stocks/di20">급락 종목</Link>
+          <Link href="/stocks/price">나스닥 100</Link>
         </nav>
 
         {/* 페이지 컨텐츠 */}
