@@ -30,6 +30,7 @@ export default function RootLayout({
           <Link href="/">홈</Link>
           <Link href="/stocks/di20">급락 종목</Link>
           <Link href="/stocks/price">나스닥 100</Link>
+          <Link href="/stocks/new-high/52w">신고가 종목</Link>
         </nav>
 
         {/* 페이지 컨텐츠 */}
