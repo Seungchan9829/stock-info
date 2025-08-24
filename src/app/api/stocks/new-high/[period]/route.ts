@@ -1,6 +1,5 @@
 import { NASDAQ_100 } from "@/constant/nasdaq_100";
 import { getPeriodHighStocks } from "@/features/high-period/service";
-import { StartDateFromPeriod } from "@/features/high-period/utils";
 import { NextRequest, NextResponse } from "next/server";
 
 export async function GET(
@@ -14,7 +13,7 @@ export async function GET(
 
         return NextResponse.json(result)
 
-    } catch (e: any) {
-        return NextResponse.json({ error: e.message }, { status: 400 });
+    } catch (e) {
+        return NextResponse.json({ error: "신고가 근접 종목 조회 실패" }, { status: 400 });
     }
   }
