@@ -3,9 +3,9 @@ import { getPeriodHighStocks } from "@/features/high-period/service";
 import { NextRequest, NextResponse } from "next/server";
 
 export async function GET(
-    req: NextRequest,
+    req: Request,
     { params }: { params: { period: string } }
-  ) {
+  )  {
     try {
         const period = params.period;
 
