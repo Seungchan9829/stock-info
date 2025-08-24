@@ -4,10 +4,10 @@ import { NextRequest, NextResponse } from "next/server";
 
 export async function GET(
     req: Request,
-    { params }: { params: { period: string } }
+    { params }: { params: Promise<{period : string}> } // Promise 타입
   )  {
     try {
-        const period = params.period;
+        const { period } = await params;
 
         const result = await getPeriodHighStocks(period, NASDAQ_100)
 
