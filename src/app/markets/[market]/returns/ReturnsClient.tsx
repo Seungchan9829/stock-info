@@ -43,7 +43,7 @@ export default function ReturnsClient({
 
         const data = (await res.json()) as ApiRow[];
         if (canceled) return;
-
+        console.log(data)
         const normalized: Row[] = data.map((r) => ({
           ticker: r.ticker,
           fullname: (r.fullname ?? null) as string | null,

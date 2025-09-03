@@ -26,7 +26,7 @@ export async function GET(
         return NextResponse.json({ error: "Unsupported market" }, { status: 400 });
     }
 
-    const tickers = MARKET_TO_TICKERS[market];
+    const tickers = MARKET_TO_TICKERS[market]; // ✅ 슬러그에 맞는 리스트 선택
 
     const client = await pool.connect();
     try{

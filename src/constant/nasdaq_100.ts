@@ -15,7 +15,7 @@ export const NASDAQ_100: string[] = [
 ]
 
 export const SNP_500 : string[] = [
-    "NVDA","MSFT","AAPL","AMZN","META","AVGO","GOOGL","GOOG","BRK.B","TSLA",
+    "NVDA","MSFT","AAPL","AMZN","META","AVGO","GOOGL","GOOG","BRK-B","TSLA",
     "JPM","WMT","V","LLY","ORCL","MA","NFLX","XOM","JNJ","COST",
     "HD","BAC","PLTR","ABBV","PG","CVX","KO","GE","TMUS","UNH",
     "CSCO","AMD","WFC","PM","CRM","MS","ABT","AXP","IBM","GS",
@@ -58,7 +58,7 @@ export const SNP_500 : string[] = [
     "PNR","J","DOW","ESS","APTV","IFF","LUV","MAA","SNA","BG",
     "LNT","INCY","EVRG","EXPD","FTV","ZBRA","PSKY","TKO","BBY","DPZ",
     "MAS","BLDR","KIM","CHRW","OMC","HOLX","ALLE","CLX","EG","BALL",
-    "TXT","CNC","BF.B","FDS","ARE","JBHT","CF","HRL","COO","AVY",
+    "TXT","CNC","BF-B","FDS","ARE","JBHT","CF","HRL","COO","AVY",
     "BEN","WYNN","REG","UDR","FOX","PAYC","BAX","SOLV","NDSN","FOXA",
     "DOC","IEX","VTRS","CPT","JKHY","HST","SJM","POOL","UHS","SWK",
     "BXP","HAS","AKAM","GL","NCLH","SWKS","NWSA","DAY","AIZ","GNRC",
