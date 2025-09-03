@@ -8,6 +8,7 @@ import { toEokUnit } from "@/utils/transform";
 
 import { NASDAQ_100 } from "@/constant/nasdaq_100";
 import { KOSPI_50 } from "@/constant/korea_index";
+import { StockByDi } from "@/types/stock";
 
 // TODO: 준비되면 실제 상수로 교체하세요.
 // import { SP500 } from "@/constant/sp500";
@@ -118,7 +119,7 @@ export default async function Page({
         </div>
       ) : (
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-          {rows.map((r: any) => (
+          {rows.map((r: StockByDi) => (
             <div
               key={r.ticker}
               className="bg-white shadow-md rounded-lg p-5 border hover:shadow-lg transition-shadow duration-200"

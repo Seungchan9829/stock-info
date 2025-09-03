@@ -15,4 +15,13 @@ export type PricesByTicker = Record<string, PriceRow[]>;
 export type PriceRowWithMaAndDi = PriceRow & {
     ma: number | null;
     di: number | null;
-  };
+};
+
+export type StockByDi = {
+  ticker: string;
+  close: number;
+  di: number;
+  pValue: number;
+  marketcap: number;
+  fullname: string;
+}
