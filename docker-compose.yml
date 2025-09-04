@@ -1,9 +1,7 @@
 services:
   web:
     container_name: stock-info-app-prod
-    build:
-      context: .
-      dockerfile: Dockerfile
+    image: docker.io/kimseungchan/stock-info:latest
     ports:
       - "3000:3000"
     environment:
