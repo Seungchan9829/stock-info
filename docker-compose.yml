@@ -1,9 +1,7 @@
 services:
   web:
     container_name: stock-info-app-prod
-    build:
-      context: .
-      dockerfile: Dockerfile       # 기본 Dockerfile (멀티 스테이지) 사용
+    image: ghcr.io/seungchan9829/stock-info:latest
     ports:
       - "3000:3000"
     environment:
