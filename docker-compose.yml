@@ -1,7 +1,9 @@
 services:
   web:
     container_name: stock-info-app-prod
-    image: ghcr.io/seungchan9829/stock-info:latest
+    build:
+      context: .
+      dockerfile: Dockerfile
     ports:
       - "3000:3000"
     environment:
