@@ -8,6 +8,13 @@ jobs:
   docker:
     runs-on: ubuntu-latest
 
+    permissions:
+      contents: read
+      packages: write
+
+    env:
+      IMAGE_NAME: ${{ toLower(format('ghcr.io/{0}/stock-info', github.repository_owner)) }}
+
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
@@ -20,8 +27,8 @@ jobs:
           password: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Build Docker image
-        run: docker build -t ghcr.io/seungchan9829/stock-info:latest .
+        run: docker build -t $IMAGE_NAME:latest .
 
       - name: Push Docker image
-        run: docker push ghcr.io/seungchan9829/stock-info:latest
+        run: docker push $IMAGE_NAME:latest
 
